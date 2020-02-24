@@ -14,12 +14,12 @@ RUN apt-get update -y && apt-get install -y \
     build-essential \
     libffi-dev \
     libssl-dev \
-    python3-dev \
-    python3-pip \
+    python-dev \
+    python-pip \
     git \
     systemd
 
-RUN pip3 install setuptools && pip3 install ansible
+RUN pip install setuptools && pip install ansible
 
 RUN ansible --version
 
