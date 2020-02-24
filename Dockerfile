@@ -14,9 +14,12 @@ RUN apt-get update -y && apt-get install -y \
     python-dev \
     python-pip \
     libssl-dev \
-    build-essential
+    build-essential \
+    software-properties-common \
+    curl
 
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs
+
 RUN apt-add-repository ppa:ansible/ansible -y
 
 RUN apt-get update && apt-get install ansible -y
