@@ -9,16 +9,16 @@ LABEL "com.github.actions.description"="Check ansible role or playbook with Ubun
 LABEL "com.github.actions.icon"="aperture"
 LABEL "com.github.actions.color"="green"
 
-RUN apt-get update -y && apt-get install -y \
-    build-essential \
-    libffi-dev \
-    libssl-dev \
+RUN apt-get update -y && apt-get install \
+    software-properties-common \
     python-dev \
     python-pip \
-    git \
-    systemd
+    libssl-dev \
+    build-essential
 
-RUN pip install setuptools && pip install ansible
+RUN apt-add-repository ppa:ansible/ansible
+
+RUN apt-get update && apt-get install ansible
 
 RUN ansible --version
 
