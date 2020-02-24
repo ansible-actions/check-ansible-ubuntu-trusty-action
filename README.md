@@ -1,32 +1,32 @@
-[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-ubuntu-latest-action/master/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-ubuntu-latest)
-[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-ubuntu-latest-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-ubuntu-latest-action/blob/master/LICENSE)
+[![Github Marketplace](https://raw.githubusercontent.com/roles-ansible/check-ansible-ubuntu-trusty-action/master/.github/marketplace.svg?sanitize=true)](https://github.com/marketplace/actions/check-ansible-ubuntu-trusty)
+[![MIT License](https://raw.githubusercontent.com/roles-ansible/check-ansible-ubuntu-trusty-action/master/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/check-ansible-ubuntu-trusty-action/blob/master/LICENSE)
 
- Check Ansible Ubuntu latest
+ Check Ansible Ubuntu trusty
 =======================
-This action allows you to test your ansible role or your playbook in a Docker Container with ``ubuntu:latest``.
+This action allows you to test your ansible role or your playbook in a Docker Container with ``ubuntu:trusty``.
 
 ## Usage
-To use the action simply create an ``ansible-ubuntu-latest.yml`` *(or choose custom ``*.yml`` name)* in the ``.github/workflows/`` directory.
+To use the action simply create an ``ansible-ubuntu-trusty.yml`` *(or choose custom ``*.yml`` name)* in the ``.github/workflows/`` directory.
 
 For example:
 
 ```yaml
-name: Ansible check ubuntu:latest  # feel free to pick your own name
+name: Ansible check ubuntu:trusty  # feel free to pick your own name
 
 on: [push, pull_request]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-trusty
 
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
     - uses: actions/checkout@v2
 
-    - name: ansible check with ubuntu:latest
+    - name: ansible check with ubuntu:trusty
       # replace "master" with any valid ref
-      uses: roles-ansible/check-ansible-ubuntu-latest-action@master
+      uses: roles-ansible/check-ansible-ubuntu-trusty-action@master
       with:
         targets: "./"
         #  [required]
@@ -41,6 +41,7 @@ jobs:
         #   the group you that we write in our hosts file.
         #   example:
         #   group: 'servers'
+        #
         # hosts: ""
         #  [optional]
         #   When testing playbooks you have to give one example
@@ -50,7 +51,8 @@ jobs:
         #   some examples:
         #   hosts: 'localhost'
         #   hosts: 'srv01.example.com'
-        # requirements
+        #
+        # requirements: ""
         #  [optional]
         #   When testing playbooks and you are using ansible galaxy,
         #   you may be interested in installing your requirements
