@@ -16,6 +16,7 @@ RUN apt-get update -y && apt-get install -y \
     libssl-dev \
     build-essential
 
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 RUN apt-add-repository ppa:ansible/ansible -y
 
 RUN apt-get update && apt-get install ansible -y
