@@ -18,7 +18,7 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: ubuntu-trusty
+    runs-on: ubuntu-latest
 
     steps:
     # Important: This sets up your GITHUB_WORKSPACE environment variable
@@ -92,4 +92,4 @@ The Dockerfile and associated scripts and documentation in this project are rele
 The initial GitHub action has been created by [Stefan Stölzle](/stoe) at
 [stoe/actions](https://github.com/stoe/actions).<br/>
 It was used by ansible for lint checks at [ansible/ansible-lint-action](https://github.com/ansible/ansible-lint-action.git)<br/>
-It was modified from [L3D](github.com/do1jlr) to check ansible roles.
+It was modified from [L3D](github.com/do1jlr) to check ansible roles and playbooks.
