@@ -1,3 +1,4 @@
+# hadolint ignore=DL3007
 FROM ubuntu:trusty
 
 LABEL "maintainer"="L3D <l3d@c3woc.de>"
@@ -9,22 +10,20 @@ LABEL "com.github.actions.description"="Check ansible role or playbook with Ubun
 LABEL "com.github.actions.icon"="aperture"
 LABEL "com.github.actions.color"="green"
 
-RUN apt-get update -y && apt-get install -y \
+# hadolint ignore=DL3008,DL3013
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
     software-properties-common \
-    python-dev \
-    python-pip \
-    libssl-dev \
     build-essential \
-    software-properties-common \
-    curl
+    libffi-dev \
+    libssl-dev \
+    python3-dev \
+    python3-pip \
+    git \
+      && apt-get clean \
+      && rm -rf /var/lib/apt/lists/* \
+      && pip3 install --no-cache-dir setuptools \
+      && pip3 install --no-cache-dir ansible \
+      && ansible --version
 
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs
-
-RUN apt-add-repository ppa:ansible/ansible -y
-
-RUN apt-get update && apt-get install ansible -y
-
-RUN ansible --version
-
-ADD ansible-docker.sh /ansible-docker.sh
+COPY ansible-docker.sh /ansible-docker.sh
 ENTRYPOINT ["/ansible-docker.sh"]
