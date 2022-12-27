@@ -10,7 +10,7 @@ LABEL "com.github.actions.description"="Check ansible role or playbook with Ubun
 LABEL "com.github.actions.icon"="aperture"
 LABEL "com.github.actions.color"="green"
 
-# hadolint ignore=DL3008,DL3013
+# hadolint ignore=DL3008,DL3013,DL3042
 RUN apt-get update -y && apt-get install -y --no-install-recommends \
     software-properties-common \
     build-essential \
@@ -21,8 +21,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     git \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* \
-      && pip3 install --no-cache-dir setuptools \
-      && pip3 install --no-cache-dir ansible \
+      && pip3 install setuptools \
+      && pip3 install ansible \
       && ansible --version
 
 COPY ansible-docker.sh /ansible-docker.sh
