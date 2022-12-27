@@ -21,8 +21,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     git \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/* \
-      && pip3 install --no-cache-dir setuptools \
-      && pip3 install --no-cache-dir ansible \
+      && pip3 install setuptools \
+      && pip3 install ansible \
       && ansible --version
 
 COPY ansible-docker.sh /ansible-docker.sh
