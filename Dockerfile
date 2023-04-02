@@ -11,7 +11,7 @@ LABEL "com.github.actions.icon"="aperture"
 LABEL "com.github.actions.color"="green"
 
 # hadolint ignore=DL3008,DL3013,DL3042
-RUN apt-get update -y && apt-get install -y --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install -y --no-install-recommends \
     software-properties-common \
     build-essential \
     libffi-dev \
